@@ -17,11 +17,17 @@ from presentation_classes import IO
 class TestIO(unittest.TestCase):
 
     def test_input_menu_choice(self):
+        """
+        Test selecting a menu option.
+        """
         with patch('builtins.input', return_value='2'):
             choice = IO.input_menu_choice("test")
             self.assertEqual('2', choice)
 
     def test_input_employee_data(self):
+        """
+        Test inputting employee data.
+        """
         with patch('builtins.input', side_effect=['August', 'Belhumeur', '2023-12-06', 5]):
             employees = []
             employees = IO.input_employee_data(employee_data=employees)
@@ -31,7 +37,10 @@ class TestIO(unittest.TestCase):
             self.assertEqual(5, employees[0].review_rating)
 
     def test_input_employee_data_incorrect_data(self):
-        with patch('builtins.input', side_effect=['August', 'Belhumeur', '2023-12-06', '99']):
+        """
+        Test that inputted employee data values correctly call ValueErrors.
+        """
+        with patch('builtins.input', side_effect=['August', 'Belhumeur', '2023-12-06', 99]):
             employees = []
             employees = IO.input_employee_data(employee_data=employees)
             self.assertRaises(ValueError)

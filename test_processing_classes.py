@@ -26,6 +26,9 @@ class TestFileProcessor(unittest.TestCase):
         self.temp_file.close()
 
     def test_read_employee_data_from_file(self):
+        """
+        Test reading employee data from temp file.
+        """
         sample_data = [{'FirstName': 'Grace', 'LastName': 'Cooper', 'ReviewDate': '2022-01-01', 'ReviewRating': 4}]
 
         with open(self.temp_file_name, 'w') as file:
@@ -39,6 +42,9 @@ class TestFileProcessor(unittest.TestCase):
         self.assertEqual(sample_data[0]['ReviewRating'], employees[0].review_rating)
 
     def test_write_employee_data_to_file(self):
+        """
+        Test writing employee data to the temp file.
+        """
         sample_data = [
             Employee('August', 'Belhumeur', '2023-12-06', 5)
         ]
