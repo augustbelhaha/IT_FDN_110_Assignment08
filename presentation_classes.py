@@ -7,7 +7,7 @@
 
 # Import Libraries
 from data_classes import Person, Employee
-from datetime import date
+
 
 # Define Data Constants and Variables
 menu_choice: str = ""  # Hold the choice made by the user

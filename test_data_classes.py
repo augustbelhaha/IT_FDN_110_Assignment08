@@ -3,6 +3,7 @@
 # # Description: The test file for data_classes.py
 # ChangeLog: (Who, When, What)
 # ABelhumeur, 12/04/2023, Created Script
+# ABelhumeur, 12/05/2023, Add Test Classes and Methods
 # ------------------------------------------------------------------------------------------------- #
 
 # Import Libraries
@@ -10,7 +11,7 @@ import unittest
 from data_classes import Person, Employee
 
 
-# Setup Unit Tests
+# ---------- Setup Unit Test Classes ---------- #
 
 class TestPerson(unittest.TestCase):
 
