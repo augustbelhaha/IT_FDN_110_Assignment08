@@ -10,6 +10,7 @@
 import unittest
 from unittest.mock import patch
 from presentation_classes import IO
+from data_classes import Employee
 
 
 # ---------- Setup Unit Test Classes ---------- #
@@ -30,7 +31,7 @@ class TestIO(unittest.TestCase):
         """
         with patch('builtins.input', side_effect=['August', 'Belhumeur', '2023-12-06', 5]):
             employees = []
-            employees = IO.input_employee_data(employee_data=employees)
+            employees = IO.input_employee_data(employee_data=employees, data_type=Employee)
             self.assertEqual('August', employees[0].first_name)
             self.assertEqual('Belhumeur', employees[0].last_name)
             self.assertEqual('2023-12-06', employees[0].review_date)
@@ -42,7 +43,7 @@ class TestIO(unittest.TestCase):
         """
         with patch('builtins.input', side_effect=['August', 'Belhumeur', '2023-12-06', 99]):
             employees = []
-            employees = IO.input_employee_data(employee_data=employees)
+            employees = IO.input_employee_data(employee_data=employees, data_type=Employee)
             self.assertRaises(ValueError)
 
 

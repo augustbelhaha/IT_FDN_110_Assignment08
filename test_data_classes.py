@@ -4,6 +4,7 @@
 # ChangeLog: (Who, When, What)
 # ABelhumeur, 12/04/2023, Created Script
 # ABelhumeur, 12/05/2023, Add Test Classes and Methods
+# ABelhumeur, 12/09/2023, Edit test methods
 # ------------------------------------------------------------------------------------------------- #
 
 # Import Libraries
@@ -22,6 +23,7 @@ class TestPerson(unittest.TestCase):
         person = Person('August', 'Belhumeur')
         self.assertEqual('August', person.first_name)
         self.assertEqual('Belhumeur', person.last_name)
+        print(person)
 
     def test_person_invalid_name(self):
         """
@@ -29,6 +31,7 @@ class TestPerson(unittest.TestCase):
         """
         with self.assertRaises(ValueError):
             person = Person('123', 'Belhumeur')
+
 
     def test_person_str(self):
         """
@@ -49,6 +52,7 @@ class TestEmployee(unittest.TestCase):
         self.assertEqual('Belhumeur', employee.last_name)
         self.assertEqual('2023-12-05', employee.review_date)
         self.assertEqual(5, employee.review_rating)
+        print(employee)
 
     def test_employee_invalid_review_date(self):
         """

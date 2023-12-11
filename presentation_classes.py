@@ -3,11 +3,10 @@
 # # Description: Collection of all presentation classes to be used in Assignment08's program
 # ChangeLog: (Who, When, What)
 # ABelhumeur, 12/04/2023, Created Script
+# ABelhumeur, 12/09/2023, Edit to remove dependencies
 # ------------------------------------------------------------------------------------------------- #
 
 # Import Libraries
-from data_classes import Person, Employee
-
 
 # Define Data Constants and Variables
 menu_choice: str = ""  # Hold the choice made by the user
@@ -49,7 +48,7 @@ class IO:
         return menu_choice
 
     @staticmethod
-    def output_employee_data(employee_data: list) -> None:
+    def output_employee_data(employee_data: list, data_type: object) -> None:
         """
         Displays all entered employee review data, showing the names of the employees, the date of their review,
         and the rating that they received.
@@ -59,7 +58,7 @@ class IO:
         message: str = ""
         print("-" * 50)
         for employee in employee_data:
-            if isinstance(employee, Employee):
+            if isinstance(employee, data_type):
                 if employee.review_rating == 5:
                     message = " {} {} is rated as 5 (Leading)"
                 elif employee.review_rating == 4:
@@ -75,7 +74,7 @@ class IO:
         print("-" * 50)
 
     @staticmethod
-    def input_employee_data(employee_data: list) -> list:
+    def input_employee_data(employee_data: list, data_type: object) -> list:
         """
         Asks the user to input information required for each employee, including the employee's first and last name,
         the date of their review, and the rating they received, which all gets appended to employee_data.
@@ -83,12 +82,13 @@ class IO:
         :return: Returns the list of all employee review data.
         """
         try:
+            employee = data_type()
             employee_first_name = str(input("Enter the employee's first name: "))
             employee_last_name = str(input("Enter the employee's last name: "))
             employee_review_date = input("Enter their review date in the format YYYY-MM-DD: ")
             review_rating_input = input("Enter their review rating from 1-5: ")
             employee_review_rating = int(review_rating_input)
-            new_employee = Employee(first_name=employee_first_name, last_name=employee_last_name,
+            new_employee = data_type(first_name=employee_first_name, last_name=employee_last_name,
                                     review_date=employee_review_date, review_rating=employee_review_rating)
             employee_data.append(new_employee)
             print()
